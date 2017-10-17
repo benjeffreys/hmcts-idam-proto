@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-xlarge">
+        Reform IdAM Administration
+      </h1>
+      <p>
+        This is the adminstration interface for the Reform IdAM. Authorised users only.
+      </p>
+
+      <h2 class="heading-medium">System Owner Menu</h2>
+
+      <p>The following menu items should only be available to a signed-in system owner user.</p>
+
+			<ul class="list list-bullet">
+				<li><a href="/sign-in.html">Manage services</a></li>
+        <li><a href="/sign-in.html">Manage roles</a></li>
+        <li><a href="/sign-in.html">Manage users</a></li>
+			</ul>
+
+      <h2 class="heading-medium">Super User Menu</h2>
+
+      <p>The following menu items should only be available to a signed-in super user.</p>
+
+      <ul class="list list-bullet">
+        <li><a href="/sign-in.html">Manage users</a></li>
+      </ul>
+
+      <h2 class="heading-medium">Admin User Menu</h2>
+
+      <p>The following menu items should only be available to a signed-in admin user.</p>
+
+      <ul class="list list-bullet">
+        <li><a href="/sign-in.html">Manage users</a></li>
+        <li><a href="/sign-in.html">Invite user to public beta</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

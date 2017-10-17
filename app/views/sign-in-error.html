@@ -5,12 +5,31 @@
   {% include "includes/phase_banner_beta.html" %}
 
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full-width">
 
       <form name="loginForm" class="form" novalidate="" method="post">
 
+        <div class="error-summary" role="group" aria-labelledby="validation-error-summary-heading" tabindex="-1">
+
+          <h1 class="heading-medium error-summary-heading" id="validation-error-summary-heading">
+            Information is missing or invalid
+          </h1>
+
+          <p>
+            Please fix the following:
+          </p>
+
+          <ul class="error-summary-list">
+
+            <li><a href="#username">Check your email address</a></li>
+            <li><a href="#password">Check your password</a></li>
+
+          </ul>
+
+        </div>
+
         <h1 class="heading-large">
-        Sign-in
+          Sign-in
         </h1>
 
         <p>
@@ -20,25 +39,25 @@
         <p>
           <a href="/reset/forgotpassword?continue-url=">Forgotten password?</a>
         </p>
-        
-        <div class="form-group ">
+
+        <div class="form-group form-group-error">
 
           <label for="username">
 
             <span class="form-label-bold">Email address</span>
-            <span class="error-message"></span>
+            <span class="error-message">Enter your email address</span>
 
           </label>
 
           <input class="form-control" type="email" id="username" name="username" value="">
         </div>
 
-        <div class="form-group ">
+        <div class="form-group form-group-error">
 
           <label for="password">
 
             <span class="form-label-bold">Password</span>
-            <span class="error-message"></span>
+            <span class="error-message">Enter your password</span>
 
           </label>
 
