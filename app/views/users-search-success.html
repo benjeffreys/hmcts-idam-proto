@@ -1,0 +1,96 @@
+{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
+
+<script>
+  function search() {
+
+    $("#loading").removeClass("hidden");
+    $("#details").addClass("hidden");
+    var email = document.getElementById("emailAddress").value;
+
+    $.post("/users/search", {
+        emailAddress: email
+      },
+      function(data, status, jqXHR) {
+        $("#loading").addClass("hidden");
+        $("#details").removeClass("hidden");
+        updateUsers(data);
+      });
+
+  }
+
+  function updateUsers(user) {
+
+    var containerDiv = document.getElementById("userDetails");
+    if (user === null || user === "" || user === 'undefined') {
+      var hiddenId = document.getElementById("userId");
+      hiddenId.value = "";
+      document.getElementById("newEmailAddress").value = document.getElementById("emailAddress").value;
+      containerDiv.innerHTML = "Could not find a user with the specified email address.";
+      $("#inviteButton").removeClass("hidden");
+    } else {
+      var hiddenId = document.getElementById("userId");
+      hiddenId.value = user.id;
+      containerDiv.innerHTML = user.forename + " " + user.surname + ' <br><button type="submit" class="button">Edit</button>';
+      $("#inviteButton").addClass("hidden");
+    }
+  }
+</script>
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a>Manage Users</a></li>
+    </ol>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+
+      <h1 class="heading-large">Manage Users</h1>
+      <p>You can add a new user or edit an existing one below.</p>
+
+      <div class="form-group">
+        <label for="emailAddress">
+          <span class="form-label-bold">Email</span>
+        </label>
+        <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="fred.blogs@hmcts.net" /><br/><br />
+        <form action="/users-search-success.html">
+          <button class="button" type="submit">
+            Search Again
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+
+      <div id="details">
+
+        <form method="post" id="userForm" action="/users">
+          <div id="userDetails">
+            <h2 class="heading-medium">User details</h2>
+            <ul>
+                  <li style="text-align: left"><strong>Fred Bloggs<strong></li>
+                  <li style="text-align: left">fred.blogs@hmcts.net</li>
+            </ul>
+            <br />
+            <button id="editButton" class="button" type="submit">Edit user</button>
+          </div>
+          <input type="hidden" id="userId" name="userId" />
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
