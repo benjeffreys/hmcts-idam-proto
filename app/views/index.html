@@ -11,7 +11,7 @@
   {% include "includes/phase_banner_beta.html" %}
 
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full">
 
       <h1 class="heading-xlarge">
         Reform IdAM V1.x Prototype
@@ -21,30 +21,37 @@
         This is the HTML prototype for the Reform IdAM V1.x application (aka Strategic IdAM and FRIDAM).
       </p>
 
-      <h2 class="heading-medium">External User Start Points</h2>
+      <h2 class="heading-medium">Admin UI</h2>
 
-      <p>The following are external user journey start points for using the IdAM.</p>
-
-			<ul class="list list-bullet">
-				<li><a href="/sign-in.html">Sign-in</a></li>
-        <li><a href="/sign-in-error.html">Sign-in (Error State)</a></li>
-			</ul>
-
-      <h2 class="heading-medium">Internal User Start Points</h2>
-
-      <p>The following are external user journey start points for using the IdAM.</p>
+      <h3>Home</h3>
 
 			<ul class="list list-bullet">
-				<li><a href="/admin-home.html">Admin Home (post sign-in)</a></li>
+				<li><a href="/admin-home-so.html">Home - System Owner view</a></li>
+        <li><a href="/admin-home-su.html">Home - Super User view</a></li>
+        <li><a href="/admin-home-au.html">Home - Admin User view</a></li>
 			</ul>
 
-      <h2 class="heading-medium">Generic Pages</h2>
+      <h3>Manage Services</h3>
+      <ul class="list list-bullet">
+        <li><a href="/services-start.html">Manage Services - Start</a></li>
+        <li><a href="/services-add.html">Manage Services - Add</a></li>
+        <li><a href="/services-add-errors.html">Manage Services - Add (WITH ERRORS)</a></li>
+        <li><a href="/services-edit.html">Manage Services - Edit</a></li>
+      </ul>
 
-      <p>The following are generic IdAM pages.</p>
+      <h3>Error Pages</h3>
 
 			<ul class="list list-bullet">
         <li><a href="/error-generic.html">Error - Generic</a></li>
 				<li><a href="/error-expired-link.html">Error - Expired Link</a></li>
+        <li><a href="/error-not-authorised.html">Error - Not Authorised</a></li>
+			</ul>
+
+      <h2 class="heading-medium">Non-Admin UI</h2>
+
+			<ul class="list list-bullet">
+				<li><a href="/sign-in.html">Sign-in</a></li>
+        <li><a href="/sign-in-error.html">Sign-in (Error State)</a></li>
 			</ul>
 
     </div>

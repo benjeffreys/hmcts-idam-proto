@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a>Manage Services</a></li>
+    </ol>
+  </div>
+
+  <script>
+    function edit(serviceId) {
+      var form = document.getElementById("serviceForm");
+      var hiddenId = document.getElementById("serviceId");
+      hiddenId.value = serviceId;
+      form.submit();
+    }
+  </script>
+
+  <div class="grid-row">
+    <div class="column-full">
+
+    <form method="post" id="serviceForm" action="/services">
+      <h1 class="heading-large">Edit Service - SERVICE_LABEL</h1>
+      <p>You can update the setting for this service below.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left">Service Label</th>
+            <th style="text-align: left">Description</th>
+            <th style="text-align: left">Available Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left"><strong>DIVORCE</strong></td>
+            <td style="text-align: left"><strong>Reform Divorce service </strong></td>
+            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>CMC_CIT</strong></td>
+            <td style="text-align: left"><strong>Citizen facing CMC service </strong></td>
+            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>CMC_ADMIN</strong></td>
+            <td style="text-align: left"><strong>Solicitor facing CMC service</strong></td>
+            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="hidden" id="serviceId" name="serviceId" />
+
+    </form>
+  </div>
+</div>
+
+
+<div class="grid-row">
+  <div class="column-full">
+<br / >
+    <form method="post" action="/services-add">
+      <button class="button" type="submit">
+                Add a new service
+            </button>
+    </form>
+</div>
+</div>
+
+  </main>
+
+  {% endblock %}
