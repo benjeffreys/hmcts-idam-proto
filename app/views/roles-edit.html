@@ -1,0 +1,290 @@
+{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
+
+<script>
+  var roleNames = {
+    "b254b289-fe01-441f-a348-10d1e992d852": "glitch"
+
+      ,
+    "1e942225-7005-412f-933e-51db4ea448de": "TTT"
+
+      ,
+    "c6cf5b4b-af05-4e25-ac01-ed53f514f8ab": "IDAM_SYSTEM_OWNER"
+
+      ,
+    "95a0c31a-991f-4589-9dab-f3fab02e86c4": "RW_Citizen"
+
+      ,
+    "c22b8147-f95d-4abb-950d-6a44e4bee17f": "kermit"
+
+      ,
+    "b1902375-04c5-428d-ab26-741fc7270e31": "role 2"
+
+      ,
+    "aed8a6b9-ec72-4a7b-9895-fd584bce79aa": "Coordinator"
+
+      ,
+    "c4f85cc2-d767-43c1-a64b-4557748d0f74": "leightest"
+
+      ,
+    "61b8cc4b-c178-4c1d-9ff1-4854acd6e70b": ""
+
+      ,
+    "5f57cc45-58ce-4d8a-b4f3-7ccd331645fb": "RW Admin"
+
+      ,
+    "688c7624-83a4-4c39-a9b0-4ba6d87e8538": "Role Example"
+
+      ,
+    "d228004b-69fd-4719-a78f-bd4ecafbafd2": "IDAM_SUPER_USER"
+
+      ,
+    "51e68880-ddfc-4c27-8483-5bb3c784429c": "benrole1"
+
+  };
+  var availableRoles = [
+    "c6cf5b4b-af05-4e25-ac01-ed53f514f8ab"
+
+    , "aed8a6b9-ec72-4a7b-9895-fd584bce79aa"
+
+    , "688c7624-83a4-4c39-a9b0-4ba6d87e8538"
+
+    , "61b8cc4b-c178-4c1d-9ff1-4854acd6e70b"
+
+    , "51e68880-ddfc-4c27-8483-5bb3c784429c"
+
+    , "b1902375-04c5-428d-ab26-741fc7270e31"
+
+    , "b254b289-fe01-441f-a348-10d1e992d852"
+
+    , "95a0c31a-991f-4589-9dab-f3fab02e86c4"
+
+    , "5f57cc45-58ce-4d8a-b4f3-7ccd331645fb"
+
+    , "1e942225-7005-412f-933e-51db4ea448de"
+
+    , "c4f85cc2-d767-43c1-a64b-4557748d0f74"
+
+    , "d228004b-69fd-4719-a78f-bd4ecafbafd2"
+
+    , "c22b8147-f95d-4abb-950d-6a44e4bee17f"
+  ];
+  var assignableRoles = [];
+  var conflictingRoles = [];
+
+  function getName(roleId) {
+    return roleNames[roleId];
+  }
+
+  function buildOptions(parentId) {
+    var parent = document.getElementById(parentId);
+    parent.options.length = 0;
+    parent.options[parent.options.length] = new Option("Select role...", null);
+    for (index in availableRoles) {
+      var roleId = availableRoles[index];
+      parent.options[parent.options.length] = new Option(getName(roleId), roleId);
+    }
+  }
+
+  function buildListItems(parentId, items) {
+    var parent = document.getElementById(parentId);
+    parent.innerHTML = '';
+    for (index in items) {
+      var role = items[index];
+      parent.innerHTML += '<li style="margin-bottom: 10px" id="' + parentId + '-' + role + '">' + getName(role) + ' <br/><button type="button" class="button" onclick="removeRole(\'' + role + '\',\'' + parentId + '\');">Remove</button></li>';
+    }
+  }
+
+  function removeRole(roleId, parentId) {
+    var toRemove = document.getElementById(parentId + "-" + roleId);
+    toRemove.remove();
+    availableRoles.push(roleId);
+    availableRoles.sort();
+    if (parentId == 'conflictingRoles') {
+      remove(conflictingRoles, roleId);
+    } else {
+      remove(assignableRoles, roleId);
+    }
+    buildOptions("newAssignableRole");
+    buildOptions("newConflictingRole");
+  }
+
+  function addRole(selectId, parentId, target) {
+
+    var select = document.getElementById(selectId);
+    var selectedRole = select.options[select.selectedIndex].value;
+    if (selectedRole == "null") {
+      if (parentId == "conflictingRoles") {
+        document.getElementById("error-conflicting-role").style.display = "block";
+      } else if (parentId == "assignableRoles") {
+        document.getElementById("error-assignable-role").style.display = "block";
+      }
+    } else {
+      document.getElementById("error-conflicting-role").style.display = "none";
+      document.getElementById("error-assignable-role").style.display = "none";
+      target.push(selectedRole);
+      target.sort();
+      buildListItems("assignableRoles", assignableRoles);
+      buildListItems("conflictingRoles", conflictingRoles);
+
+      removeAvailableRole(selectedRole);
+    }
+  }
+
+  function removeAvailableRole(roleId) {
+    remove(availableRoles, roleId);
+
+    buildOptions("newAssignableRole");
+    buildOptions("newConflictingRole");
+  }
+
+  function save() {
+    var role = '{';
+    role += '"name":"' + document.getElementById('roleName').value + '"';
+    role += ',"description":"' + document.getElementById('roleDescription').value + '"';
+    role += ',"assignableRoles":' + JSON.stringify(assignableRoles);
+    role += ',"conflictingRoles":' + JSON.stringify(conflictingRoles);
+    role += '}';
+
+    document.getElementById('roleJson').value = role;
+
+    document.getElementById('role-form').submit();
+  }
+</script>
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/roles-start.html">Manage Roles</a></li>
+      <li>Edit Role</li>
+    </ol>
+  </div>
+
+  <form action="/roles-add-errors" id="role-form" method="post" class="form">
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <h1 class="heading-large">Edit Role</h1>
+        <p>You can edit the details of the role below.</p>
+
+        <div class="form-group">
+
+          <label for="roleName">
+                    <span class="form-label-bold">Role Label</span>
+                    <span class="form-hint">
+                      This is the unique label for your role. It cannot be edited after the role has been created.
+                    </span>
+                </label>
+
+          <input disabled class="form-control" type="text" id="roleName" name="roleName" value="ROLE_NAME_1" />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="roleDescription">
+                    <span class="form-label-bold">Description</span>
+                    <span class="form-hint">
+                      This is the description of the role which helps to more easily identify it to IdAM administrators.
+                    </span>
+                </label>
+
+          <input class="form-control" type="text" id="roleDescription" name="roleDescription" value="" />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="assignableRoles">
+                    <span class="form-label-bold">Assignable Roles</span>
+                    <span class="form-hint">
+                      These are the user roles that can be assigned by a user with this role.
+                    </span>
+                </label>
+
+          <ul class="list list-bullet" id="assignableRoles">
+            <!-- <script>buildListItems('assignableRoles', assignableRoles);</script> -->
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+          </ul>
+
+          <span id="error-assignable-role" class="error-message" style="display: none">Please select an assignable role.</span>
+
+          <select class="form-control" name="newAssignableRole" id="newAssignableRole">
+                  <!-- <script>buildOptions('newAssignableRole')</script> -->
+                  <option value="">Select a role...</option>
+                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+                </select>
+
+          <br /><br />
+
+          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">Add assignable role
+                </button>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="conflictingRoles">
+                    <span class="form-label-bold">Conflicting Roles</span>
+                    <span class="form-hint">
+                      If a user already has any of these roles, then this role cannot be added.
+                    </span>
+                </label>
+
+          <ul class="list list-bullet" id="conflictingRoles">
+            <!-- <script>buildListItems('conflictingRoles', conflictingRoles);</script> -->
+            <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+          </ul>
+
+          <span id="error-conflicting-role" class="error-message" style="display: none">Please select a conflicting role.</span>
+
+          <select class="form-control" name="newConflictingRole" id="newConflictingRole">
+                  <!-- <script>buildOptions('newConflictingRole')</script> -->
+                  <option value="">Select a role...</option>
+                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+                </select>
+
+          <br /><br />
+
+          <button type="button" class="button" onclick="addRole('newConflictingRole','conflictingRoles', conflictingRoles);">Add conflicting role
+                </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <div class="form-group">
+
+          <input type="hidden" id="roleJson" name="roleJson" />
+          <input type="hidden" id="roleId" name="roleId" value="" />
+
+
+          <br /><br /><button class="button" onclick="save();">
+                  Save Role
+              </button><br /><br />
+
+          <button onclick="window.location='/roles-start.html'" class="button" type="button">
+                  Cancel
+              </button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+  {% endblock %}

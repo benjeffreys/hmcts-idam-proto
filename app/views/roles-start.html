@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="breadcrumbs">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a>Manage Roles</a></li>
+    </ol>
+  </div>
+
+  <script>
+      function edit(roleId){
+          var form = document.getElementById("roleForm");
+          var hiddenId = document.getElementById("roleId");
+          hiddenId.value = roleId;
+          form.submit();
+      }
+  </script>
+
+  <div class="grid-row">
+    <div class="column-full">
+
+    <form method="post" id="roleForm" action="/roles">
+
+      <h1 class="heading-large">Manage Roles</h1>
+      <p>You can add a new user role or edit an existing one below.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left">Role Label</th>
+            <th style="text-align: left">Description</th>
+            <th style="text-align: left">Available Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left"><strong>SERVICE_ROLE_1</strong></td>
+            <td style="text-align: left"><strong>Example role for a service</strong></td>
+            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>SERVICE_ROLE_2</strong></td>
+            <td style="text-align: left"><strong>Additional role for a service</strong></td>
+            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: left"><strong>SERVICE_ROLE_3</strong></td>
+            <td style="text-align: left"><strong>One last additional service role</strong></td>
+            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="hidden" id="roleId" name="roleId" />
+
+    </form>
+  </div>
+</div>
+
+
+<div class="grid-row">
+  <div class="column-full">
+<br / >
+    <form method="post" action="/roles-add">
+      <button class="button" type="submit">
+                Add a new role
+            </button>
+    </form>
+</div>
+</div>
+
+  </main>
+
+  {% endblock %}

@@ -1,10 +1,147 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
 
-{% block page_title %}
-  GOV.UK prototype kit
-{% endblock %}
+<script>
+  var roleNames = {
+    "b254b289-fe01-441f-a348-10d1e992d852": "glitch",
+    "c6cf5b4b-af05-4e25-ac01-ed53f514f8ab": "IDAM_SYSTEM_OWNER",
+    "95a0c31a-991f-4589-9dab-f3fab02e86c4": "RW_Citizen",
+    "b1902375-04c5-428d-ab26-741fc7270e31": "role 2",
+    "aed8a6b9-ec72-4a7b-9895-fd584bce79aa": "Coordinator",
+    "61b8cc4b-c178-4c1d-9ff1-4854acd6e70b": "",
+    "688c7624-83a4-4c39-a9b0-4ba6d87e8538": "Role Example",
+    "51e68880-ddfc-4c27-8483-5bb3c784429c": "benrole1"
+  };
+  var availableRoles = ["c6cf5b4b-af05-4e25-ac01-ed53f514f8ab", "aed8a6b9-ec72-4a7b-9895-fd584bce79aa", "688c7624-83a4-4c39-a9b0-4ba6d87e8538", "61b8cc4b-c178-4c1d-9ff1-4854acd6e70b", "51e68880-ddfc-4c27-8483-5bb3c784429c",
+    "b1902375-04c5-428d-ab26-741fc7270e31", "b254b289-fe01-441f-a348-10d1e992d852", "95a0c31a-991f-4589-9dab-f3fab02e86c4"
+  ];
+  var allowedRoles = [];
+  var onboardingRoles = [];
 
-{% block content %}
+  function getName(roleId) {
+    return roleNames[roleId];
+  }
+
+  function buildAllowedRolesList() {
+
+    var items = new Array();
+    allowedRoles.forEach(function(roleId) {
+      items.push({
+        name: getName(roleId),
+        id: roleId
+      });
+    });
+    buildListItems(document.getElementById("allowedRolesList"), items, "allowedRoles", [{
+      name: "Remove",
+      function: "removeAllowedRole"
+    }]);
+  }
+
+  function buildOnboardingRolesList() {
+
+    var items = new Array();
+    onboardingRoles.forEach(function(roleId) {
+      items.push({
+        name: getName(roleId),
+        id: roleId
+      });
+    });
+    buildListItems(document.getElementById("onboardingRolesList"), items, "onboardingRoles", [{
+      name: "Remove",
+      function: "removeOnboardingRole"
+    }]);
+  }
+
+  function buildAllowedRoleOptions() {
+
+    var items = [];
+    availableRoles.forEach(function(roleId) {
+      items.push({
+        name: getName(roleId),
+        value: roleId
+      });
+    });
+
+    buildDropDown(document.getElementById("newAllowedRoles"), items, "Select a role...");
+  }
+
+  function buildOnboardingRoleOptions() {
+
+    var items = [];
+    allowedRoles.forEach(function(roleId) {
+      items.push({
+        name: getName(roleId),
+        value: roleId
+      });
+    });
+
+    buildDropDown(document.getElementById("newOnboardingRoles"), items, "Select a role...");
+  }
+
+
+  function addAllowedRole() {
+    var select = document.getElementById("newAllowedRoles");
+    var roleId = select.options[select.selectedIndex].value;
+    if (isNotBlank(roleId)) {
+      allowedRoles.push(roleId);
+      allowedRoles.sort();
+
+      buildAllowedRolesList();
+      loadRoles();
+      document.getElementById("allowedRoles").value = allowedRoles;
+    }
+  }
+
+  function addOnboardingRole() {
+    var select = document.getElementById("newOnboardingRoles");
+    var roleId = select.options[select.selectedIndex].value;
+    if (isNotBlank(roleId)) {
+      onboardingRoles.push(roleId);
+      onboardingRoles.sort();
+
+      buildOnboardingRolesList();
+      document.getElementById("onboardingRoles").value = onboardingRoles;
+    }
+  }
+
+  function removeAllowedRole(roleId) {
+
+    remove(allowedRoles, roleId);
+    remove(onboardingRoles, roleId);
+
+    document.getElementById("allowedRoles").value = allowedRoles;
+    document.getElementById("onboardingRoles").value = onboardingRoles;
+    buildAllowedRolesList();
+    buildOnboardingRolesList();
+    loadRoles();
+  }
+
+  function removeOnboardingRole(roleId) {
+
+    remove(onboardingRoles, roleId);
+    document.getElementById("onboardingRoles").value = onboardingRoles;
+
+    buildOnboardingRolesList();
+  }
+
+
+  var updateRoles = function(roles) {
+    availableRoles = roles;
+    buildAllowedRoleOptions();
+    buildOnboardingRoleOptions();
+  };
+
+  function loadRoles() {
+
+    requestUpdateRoles(null, allowedRoles, "/services", updateRoles);
+  }
+
+  $(document).ready(function() {
+    buildAllowedRolesList();
+    buildOnboardingRolesList();
+    buildAllowedRoleOptions();
+    buildOnboardingRoleOptions();
+  });
+</script>
 
 <main id="content" role="main">
 
@@ -18,67 +155,129 @@
     </ol>
   </div>
 
-  <script>
-    function edit(serviceId) {
-      var form = document.getElementById("serviceForm");
-      var hiddenId = document.getElementById("serviceId");
-      hiddenId.value = serviceId;
-      form.submit();
-    }
-  </script>
+  <form action="/services-add-errors" id="service-form" method="post" class="form">
 
-  <div class="grid-row">
-    <div class="column-full">
-
-    <form method="post" id="serviceForm" action="/services">
-      <h1 class="heading-large">Edit Service - SERVICE_LABEL</h1>
-      <p>You can update the setting for this service below.</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align: left">Service Label</th>
-            <th style="text-align: left">Description</th>
-            <th style="text-align: left">Available Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align: left"><strong>DIVORCE</strong></td>
-            <td style="text-align: left"><strong>Reform Divorce service </strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>CMC_CIT</strong></td>
-            <td style="text-align: left"><strong>Citizen facing CMC service </strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>CMC_ADMIN</strong></td>
-            <td style="text-align: left"><strong>Solicitor facing CMC service</strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <input type="hidden" id="serviceId" name="serviceId" />
-
-    </form>
-  </div>
-</div>
+    <div class="grid-row">
+      <div class="column-two-thirds">
 
 
-<div class="grid-row">
-  <div class="column-full">
-<br / >
-    <form method="post" action="/services">
-      <button class="button" type="submit">
-                Add a new service
-            </button>
-    </form>
-</div>
-</div>
+        <h1 class="heading-large">Edit Service - SERVICE_LABEL</h1>
+        <p>You can edit the settings for this service below.</p>
 
-  </main>
+        <div class="form-group">
+
+          <label for="serviceLabel">
+                    <span class="form-label-bold">Label</span>
+                    <span class="form-hint">
+                      This is the unique label for your service. It cannot be edited after the service has been created.
+                    </span>
+                </label>
+
+          <input disabled class="form-control" type="text" value="SERVICE_LABEL" />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="serviceDescription">
+                    <span class="form-label-bold">Description</span>
+                    <span class="form-hint">
+                      This is the description of the service which helps to more easily identify it to IdAM administrators.
+                    </span>
+                </label>
+
+          <input class="form-control" type="text" id="serviceDescription" name="serviceDescription" value="" />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="onboardingEndpoint">
+                    <span class="form-label-bold">On-boarding Endpoint</span>
+                    <span class="form-hint">
+                      This endpoint can be used during the citizen invitation process. It will be passed information about the newly registered user once they activate their account.
+                    </span>
+                </label>
+
+          <input class="form-control" type="text" id="onboardingEndpoint" name="onboardingEndpoint" value="" />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="allowedRolesList">
+                    <span class="form-label-bold">Service Roles</span>
+                    <span class="form-hint">
+                      These are the unique user roles for this service. You will need to create these roles before you can add them here (the service can be created without them initially).
+                    </span>
+                </label>
+
+          <ul class="list list-bullet" id="allowedRolesList">
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+          </ul>
+
+          <select class="form-control" name="newAllowedRoles" id="newAllowedRoles">
+                  <option value="">Select a role...</option>
+                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+                </select>
+
+          <br /><br />
+
+          <button class="button" type="button" class="button" onclick="addAllowedRole();">Add service role</button>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="newOnboardingRoles">
+                    <span class="form-label-bold">Private Beta Roles</span>
+                    <span class="form-hint">
+                      These are the user roles that will be added to any user that is invited to a private beta.
+                    </span>
+                </label>
+
+          <ul class="list list-bullet" id="onboardingRolesList">
+            <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
+          </ul>
+
+          <select class="form-control" name="newOnboardingRoles" id="newOnboardingRoles">
+                  <option value="">Select a role...</option>
+                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+                </select>
+
+          <br /><br />
+
+          <button type="button" class="button" onclick="addOnboardingRole();">Add private beta role</button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+
+        <div class="form-group">
+
+          <input type="hidden" id="serviceId" name="serviceId" value="" />
+          <input type="hidden" id="allowedRoles" name="allowedRoles" value="" />
+          <input type="hidden" id="onboardingRoles" name="onboardingRoles" value="" />
+          <br /><br />
+          <button class="button" type="submit">
+          Save Service
+      </button><br /><br />
+
+        </div>
+
+      </div>
+    </div>
+
+  </form>
 
   {% endblock %}
