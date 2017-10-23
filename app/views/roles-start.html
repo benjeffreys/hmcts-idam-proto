@@ -17,67 +17,44 @@
     </ol>
   </div>
 
-  <script>
-      function edit(roleId){
-          var form = document.getElementById("roleForm");
-          var hiddenId = document.getElementById("roleId");
-          hiddenId.value = roleId;
-          form.submit();
-      }
-  </script>
-
   <div class="grid-row">
     <div class="column-full">
 
-    <form method="post" id="roleForm" action="/roles">
+      <form method="get" id="roleForm" action="roles-display.html">
 
-      <h1 class="heading-large">Manage Roles</h1>
-      <p>You can add a new user role or edit an existing one below.</p>
+        <h1 class="heading-large">Manage Roles</h1>
+        <p>This section allows you to manage the user roles assigned to a service.</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align: left">Role Label</th>
-            <th style="text-align: left">Description</th>
-            <th style="text-align: left">Available Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_1</strong></td>
-            <td style="text-align: left"><strong>Example role for a service</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_2</strong></td>
-            <td style="text-align: left"><strong>Additional role for a service</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_3</strong></td>
-            <td style="text-align: left"><strong>One last additional service role</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="form-group">
+          <fieldset>
 
-      <input type="hidden" id="roleId" name="roleId" />
+            <legend>
+              <h1 class="heading-medium">Which service do you want to manage the roles for?</h1>
+            </legend>
 
-    </form>
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+              <label for="radio-1">Divorce Citizen App (DIVORCE)</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+              <label for="radio-2">Civil Money Claims Citizen App (CMC_CIT)</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+              <label for="radio-3">Civil Money Claims Solicitor App (CMC_SOL)</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+          <input class="button" type="submit" value="Continue"><br /><br />
+          <input class="button" type="button" onclick="window.location='admin-home-so.html'" value="Cancel and return to main menu">
+
+      </form>
+
+    </div>
   </div>
-</div>
-
-
-<div class="grid-row">
-  <div class="column-full">
-<br / >
-    <form method="post" action="/roles-add">
-      <button class="button" type="submit">
-                Add a new role
-            </button>
-    </form>
-</div>
-</div>
 
   </main>
 

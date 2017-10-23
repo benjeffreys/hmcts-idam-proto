@@ -168,17 +168,26 @@
     <div class="grid-row">
       <div class="column-two-thirds">
 
-        <h1 class="heading-large">Add Role</h1>
+        <h1 class="heading-large">Add Role - DIVORCE</h1>
         <p>You can enter the details of the new role below.</p>
+
+        <div class="notice">
+          <i class="icon icon-important">
+            <span class="visually-hidden">Please note</span>
+          </i>
+          <strong class="bold-small">
+            Only roles for this service (that you have permission to manage) will be shown below.
+          </strong>
+        </div><br /><br />
 
         <div class="form-group">
 
           <label for="roleName">
-                    <span class="form-label-bold">Role Label</span>
-                    <span class="form-hint">
-                      This is the unique label for your role. It cannot be edited after the role has been created.
-                    </span>
-                </label>
+              <span class="form-label-bold">Role Label</span>
+              <span class="form-hint">
+                This is the unique label for your role. It cannot be edited after the role has been created.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="roleName" name="roleName" value="" />
 
@@ -213,7 +222,7 @@
             <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
           </ul>
 
-          <span id="error-assignable-role" class="error-message" style="display: none">Please select an assignable role.</span>
+          <span id="error-assignable-role" class="error-message" style="display: none">Please select at least one role.</span>
 
           <select class="form-control" name="newAssignableRole" id="newAssignableRole">
             <!-- <script>buildOptions('newAssignableRole')</script> -->
@@ -225,8 +234,9 @@
 
           <br /><br />
 
-          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">Add assignable role
-                </button>
+          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">
+            Add assignable role
+          </button>
 
         </div>
 
@@ -243,8 +253,6 @@
             <!-- <script>buildListItems('conflictingRoles', conflictingRoles);</script> -->
             <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
           </ul>
-
-          <span id="error-conflicting-role" class="error-message" style="display: none">Please select a conflicting role.</span>
 
           <select class="form-control" name="newConflictingRole" id="newConflictingRole">
                   <!-- <script>buildOptions('newConflictingRole')</script> -->
@@ -277,7 +285,7 @@
                   Save Role
               </button><br /><br />
 
-          <button onclick="window.location='/roles-start.html'" class="button" type="button">
+          <button onclick="window.location='/roles-display.html'" class="button" type="button">
                   Cancel
               </button>
 

@@ -168,17 +168,26 @@
     <div class="grid-row">
       <div class="column-two-thirds">
 
-        <h1 class="heading-large">Edit Role</h1>
+        <h1 class="heading-large">Edit Role - DIVORCE</h1>
         <p>You can edit the details of the role below.</p>
+
+        <div class="notice">
+          <i class="icon icon-important">
+            <span class="visually-hidden">Please note</span>
+          </i>
+          <strong class="bold-small">
+            Only roles for this service (that you have permission to manage) will be shown below.
+          </strong>
+        </div><br /><br />
 
         <div class="form-group">
 
           <label for="roleName">
-                    <span class="form-label-bold">Role Label</span>
-                    <span class="form-hint">
-                      This is the unique label for your role. It cannot be edited after the role has been created.
-                    </span>
-                </label>
+              <span class="form-label-bold">Role Label</span>
+              <span class="form-hint">
+                This is the unique label for your role. It cannot be edited after the role has been created.
+              </span>
+          </label>
 
           <input disabled class="form-control" type="text" id="roleName" name="roleName" value="ROLE_NAME_1" />
 
@@ -187,11 +196,11 @@
         <div class="form-group">
 
           <label for="roleDescription">
-                    <span class="form-label-bold">Description</span>
-                    <span class="form-hint">
-                      This is the description of the role which helps to more easily identify it to IdAM administrators.
-                    </span>
-                </label>
+              <span class="form-label-bold">Description</span>
+              <span class="form-hint">
+                This is the description of the role which helps to more easily identify it to IdAM administrators.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="roleDescription" name="roleDescription" value="" />
 
@@ -216,17 +225,18 @@
           <span id="error-assignable-role" class="error-message" style="display: none">Please select an assignable role.</span>
 
           <select class="form-control" name="newAssignableRole" id="newAssignableRole">
-                  <!-- <script>buildOptions('newAssignableRole')</script> -->
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
+            <!-- <script>buildOptions('newAssignableRole')</script> -->
+            <option value="">Select a role...</option>
+            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+          </select>
 
           <br /><br />
 
-          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">Add assignable role
-                </button>
+          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">
+            Add assignable role
+          </button>
 
         </div>
 
@@ -277,7 +287,7 @@
                   Save Role
               </button><br /><br />
 
-          <button onclick="window.location='/roles-start.html'" class="button" type="button">
+          <button onclick="window.location='/roles-display.html'" class="button" type="button">
                   Cancel
               </button>
 

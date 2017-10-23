@@ -202,62 +202,6 @@
 
         </div>
 
-        <div class="form-group">
-
-          <label for="allowedRolesList">
-                    <span class="form-label-bold">Service Roles</span>
-                    <span class="form-hint">
-                      These are the unique user roles for this service. You will need to create these roles before you can add them here (the service can be created without them initially).
-                    </span>
-                </label>
-
-          <span id="error-assignable-role" class="error-message" style="display: none">Please select an assignable role.</span>
-
-          <ul class="list list-bullet" id="allowedRolesList">
-            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-            <li>EXISTING_ROLE2 <a href="#" title="Remove this role">[Remove]</a></li>
-            <li>EXISTING_ROLE3 <a href="#" title="Remove this role">[Remove]</a></li>
-          </ul>
-
-          <select class="form-control" name="newAllowedRoles" id="newAllowedRoles">
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
-
-          <br /><br />
-
-          <button class="button" type="button" class="button" onclick="addAllowedRole();">Add service role</button>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="newOnboardingRoles">
-                    <span class="form-label-bold">Private Beta Roles</span>
-                    <span class="form-hint">
-                      These are the user roles that will be added to any user that is invited to a private beta.
-                    </span>
-                </label>
-
-          <ul class="list list-bullet" id="onboardingRolesList">
-            <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-          </ul>
-
-          <select class="form-control" name="newOnboardingRoles" id="newOnboardingRoles">
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
-
-          <br /><br />
-
-          <button type="button" class="button" onclick="addOnboardingRole();">Add private beta role</button>
-
-        </div>
-
       </div>
     </div>
 
@@ -275,7 +219,7 @@
       </button><br /><br />
 
           <button onclick="window.location='/services-start.html'" class="button" type="button">
-          Cancel
+          Cancel and return to service list
       </button>
 
         </div>
