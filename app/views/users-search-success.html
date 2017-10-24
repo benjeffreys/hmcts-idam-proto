@@ -60,28 +60,24 @@
         <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="fred.blogs@hmcts.net" /><br/><br />
         <form action="/users-search-success.html">
           <button class="button" type="submit">
-            Search Again
+            Search
           </button>
         </form>
       </div>
 
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-full">
-
       <div id="details">
 
-        <form method="post" id="userForm" action="/users">
+        <form method="post" id="userForm" action="/users-edit">
           <div id="userDetails">
-            <h2 class="heading-medium">User details</h2>
+            <h2 class="heading-medium">User found</h2>
             <ul>
                   <li style="text-align: left"><strong>Fred Bloggs<strong></li>
                   <li style="text-align: left">fred.blogs@hmcts.net</li>
             </ul>
             <br />
-            <button id="editButton" class="button" type="submit">Edit user</button>
+            <button id="editButton" class="button" type="submit">Edit this user</button>
+            <br/><br/>
+            <a href="admin-home-so.html">Return to main menu</a>
           </div>
           <input type="hidden" id="userId" name="userId" />
         </form>

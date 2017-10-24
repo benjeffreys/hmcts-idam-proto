@@ -14,39 +14,20 @@ GOV.UK prototype kit
     <ol>
       <li><a href="/">Home</a></li>
       <li><a href="/users-start.html">Manage Users</a></li>
-      <li>Add User</li>
+      <li>Edit User</li>
     </ol>
   </div>
 
 
-  <form action="/users-add-roles" id="user-form" method="post">
+  <form action="/users-edit-roles" id="user-form" method="post">
 
     <div class="grid-row">
       <div class="column-full">
 
-        <div class="error-summary" role="group" aria-labelledby="validation-error-summary-heading" tabindex="-1">
-
-          <h1 class="heading-medium error-summary-heading" id="validation-error-summary-heading">
-            Information is missing or invalid
-          </h1>
-
-          <p>
-            Please fix the following:
-          </p>
-
-          <ul class="error-summary-list">
-
-            <li><a href="#firstname">The user's first name cannot be blank</a></li>
-            <li><a href="#lastname">The user's last name name cannot be blank</a></li>
-            <li><a href="#services">At least one service must be selected</a></li>
-          </ul>
-
-        </div>
-
-        <h1 class="heading-large">Register User - Details and Services</h1>
-        <p>You are registering a user with the following email address:<br />
+        <h1 class="heading-large">Edit User - Details and Services</h1>
+        <p>You are editing:<br />
         <span class="heading-medium">fred.blogs@hmcts.net</span></p>
-        <p>To register a different user, please return to the <a href="/users-start.html">search page</a>.</p>
+        <p>To edit a different user, please return to the <a href="/users-start.html">search page</a>.</p>
         <input type="hidden" id="email" name="email" required="true" value="fred.blogs@hmcts.net">
 
       </div>
@@ -55,45 +36,36 @@ GOV.UK prototype kit
     <div class="grid-row">
       <div class="column-full">
 
-          <div class="form-group form-group-error">
+          <div class="form-group">
               <label for="firstname">
                 <span class="form-label-bold">First name</span>
                 <span class="form-hint">Please enter the user's first name</span>
-                <span class="error-message">
-                  This cannot be blank
-                </span>
               </label>
-              <input class="form-control" type="text" id="firstname" name="firstname">
+              <input class="form-control" type="text" id="firstname" name="firstname" value="Fred">
           </div>
 
-          <div class="form-group form-group-error">
+          <div class="form-group">
               <label for="lastname">
                 <span class="form-label-bold">Last name</span>
                 <span class="form-hint">Please enter the user's last name</span>
-                <span class="error-message">
-                  This cannot be blank
-                </span>
               </label>
-              <input class="form-control" type="text" id="lastname" name="lastname">
+              <input class="form-control" type="text" id="lastname" name="lastname" value="Bloggs">
           </div>
 
-          <div class="form-group form-group-error" id="services">
+          <div class="form-group" id="services">
             <fieldset>
 
               <legend>
                 <span class="form-label-bold">Assigned services</span>
                 <span class="form-hint">Please select one or more services to assign this user to</span>
-                <span class="error-message">
-                  At least one service must be selected
-                </span>
               </legend>
 
               <div class="multiple-choice">
-                <input id="select-1" type="checkbox" name="assigned-services" value="services-edit.html">
+                <input checked="checked" id="select-1" type="checkbox" name="assigned-services" value="services-edit.html">
                 <label for="select-1">Divorce Citizen App (DIVORCE)</label>
               </div>
               <div class="multiple-choice">
-                <input id="select-2" type="checkbox" name="assigned-services" value="services-edit.html">
+                <input checked="checked" id="select-2" type="checkbox" name="assigned-services" value="services-edit.html">
                 <label for="select-2">Civil Money Claims Citizen App (CMC_CIT)</label>
               </div>
               <div class="multiple-choice">

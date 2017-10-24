@@ -143,58 +143,106 @@ GOV.UK prototype kit
     <ol>
       <li><a href="/">Home</a></li>
       <li><a href="/users-start.html">Manage Users</a></li>
-      <li>Add User</li>
+      <li>Edit User</li>
     </ol>
   </div>
 
-  <form action="users-edit-success" id="user-form" method="post">
+  <form action="users-edit-confirm" id="user-form" method="post">
 
     <div class="grid-row">
       <div class="column-full">
 
-        <h1 class="heading-large">Register User - Confirm Details</h1>
-        <p>Please confirm the following details:</p>
-
-        <p><span class="heading-medium">Email address:</span><br/>
-        fred.blogs@hmcts.net</p>
-
-        <p><span class="heading-medium">First name:</span><br/>
-        Fred</p>
-
-        <p><span class="heading-medium">Last name:</span><br/>
-        Bloggs</p>
-
-        <p><span class="heading-medium">Services:</span><br/>
-        DIVORCE<br/>
-        CMC_ADMIN<br/>
-        </p>
-
-        <p><span class="heading-medium">Assigned roles:</span><br/>
-        DIVORCE_ADMIN<br/>
-        CMC_ADMIN<br/>
-        </p>
-
+        <h1 class="heading-large">Edit User - Roles</h1>
+        <p>You are editing:<br />
+        <span class="heading-medium">fred.blogs@hmcts.net</span></p>
+        <p>To edit a different user, please return to the <a href="/users-start.html">search page</a>.</p>
         <input type="hidden" id="email" name="email" required="true" value="fred.blogs@hmcts.net">
 
       </div>
     </div>
 
-
-
-
     <div class="grid-row">
       <div class="column-full">
 
-        <button class="button" type="submit">
-          Confirm
-        </button>
+          <div class="form-group">
+            <fieldset>
 
-        <button class="button" type="button">
-          Cancel
-        </button>
+              <legend>
+                <span class="form-label-bold">Assigned Roles</span>
+                <span class="form-hint">
+                  Select the roles that are to be assigned to this user.
+                </span>
+              </legend><br/>
 
-        <br/><br/>
-        <a href="users-start.html">Search for another user</a>
+              <h3 class="heading-small form-block">DIVORCE</h3>
+
+              <div class="multiple-choice">
+                <input checked="checked" id="select-1" type="checkbox" name="assigned-services" value="DIVORCE_ADMIN">
+                <label for="select-1">DIVORCE_ADMIN</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="select-2" type="checkbox" name="assigned-services" value="DIVORCE_ADMIN">
+                <label for="select-2">DIVORCE_ROLE_2</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="select-3" type="checkbox" name="assigned-services" value="DIVORCE_ADMIN">
+                <label for="select-3">DIVORCE_ADMIN</label>
+              </div>
+              <div class="multiple-choice">
+                <input disabled id="select-3" type="checkbox" name="assigned-services" value="DIVORCE_ADMIN">
+                <label for="select-3">DIVORCE_CONFLICTING_ROLE</label>
+              </div>
+
+              <h3 class="heading-small form-block">CMC_ADMIN</h3>
+
+              <div class="multiple-choice">
+                <input checked="checked" id="select-4" type="checkbox" name="assigned-services" value="services-edit.html">
+                <label for="select-4">CMC_ADMIN</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="select-5" type="checkbox" name="assigned-services" value="services-edit.html">
+                <label for="select-5">CMC_ROLE_2</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="grid-row">
+            <div class="column-full">
+
+              <button class="button" type="submit">
+                Continue
+              </button>
+
+              <br/><br/>
+              <a href="users-start.html">Search for another user</a>
+
+            </div>
+          </div>
+
+  <!--
+
+  <div class="form-group" style="margin-bottom: 5px">
+                 <label for="services">
+                     <span class="form-label">Services</span>
+                 </label>
+                 <select class="form-control"  name="services" id="services" onchange="loadRoles();"></select>
+             </div>
+             <div class="form-group" style="margin-bottom: 5px">
+                 <label for="newAssignableRole">
+                     <span class="form-label">Assignable Role</span>
+                 </label>
+                 <select class="form-control" name="newAssignableRole" id="newAssignableRole"></select>
+             </div>
+             <div class="form-group" style="margin-bottom: 60px">
+                 <button type="button" class="button" onclick="addRole('newAssignableRole');" id="addButton">
+                     Add
+                 </button>
+             </div>
+
+  -->
+
+
 
       </div>
     </div>

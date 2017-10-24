@@ -43,48 +43,25 @@
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a>Manage Users</a></li>
+      <li><a href="/users-start.html">Manage Users</a></li>
+      <li>Edit User</li>
     </ol>
   </div>
 
   <div class="grid-row">
     <div class="column-full">
 
-      <h1 class="heading-large">Manage Users</h1>
-      <p>Search for the user by entering their full email address below. You can then edit an existing user or register them as a new one.</p>
-
-      <div class="form-group">
-        <label for="emailAddress">
-          <span class="form-label-bold">Email</span>
-          <span class="error-message">User not found</span>
-        </label>
-        <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="fred.blogs@hmcts.net" /><br/><br />
-        <form action="/users-search-success.html">
-          <button class="button" type="submit">
-            Search again
-          </button>
-        </form>
+      <div class="govuk-box-highlight">
+        <h1 class="heading-xlarge">
+          User updated successfully
+        </h1>
+        <p class="font-small">
+          The user details have been updated. If they have been added to a private beta then they may receive an email welcoming them to that service.
+        </p>
       </div>
 
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-full">
-
-      <div id="details">
-
-        <form action="/users-add.html">
-          <div id="userDetails">
-            Alternatively, you can use the above email address to register a new user.<br/><br/>
-            <button id="editButton" class="button" type="submit">Register new user</button>
-          </div>
-          <input type="hidden" id="userId" name="userId" />
-        </form>
-        <br/>
-        <a href="admin-home-so.html">Return to main menu</a>
-
-      </div>
+      <br/><br/>
+      <a href="users-start.html">Manage another user</a><br/>or<br/><a href="admin-home-so.html">Return to main menu</a>
 
     </div>
   </div>
