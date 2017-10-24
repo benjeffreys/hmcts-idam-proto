@@ -43,46 +43,44 @@
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Home</a></li>
-      <li>Manage Users</li>
+      <li>Invite Users</li>
     </ol>
   </div>
 
   <div class="grid-row">
     <div class="column-full">
 
-      <h1 class="heading-large">Manage Users</h1>
-      <p>Search for the user by entering their full email address below. You can then edit an existing user or register them as a new one.</p>
+      <h1 class="heading-large">Invite Users</h1>
+      <p>Invite a user to a private beta by entering their full email address below.</p>
 
       <div class="form-group">
         <label for="emailAddress">
           <span class="form-label-bold">Email</span>
-          <span class="error-message">User not found</span>
         </label>
         <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="fred.blogs@hmcts.net" /><br/><br />
-        <form action="/users-search-success.html">
+        <form action="/invite-search-success.html">
           <button class="button" type="submit">
-            Search again
+            Search
           </button>
         </form>
       </div>
 
-    </div>
-  </div>
-
-  <div class="grid-row">
-    <div class="column-full">
-
       <div id="details">
 
-        <form action="/users-add.html">
+        <form method="post" id="userForm" action="/invite-edit">
           <div id="userDetails">
-            Alternatively, you can use the above email address to register a new user.<br/><br/>
-            <button id="editButton" class="button" type="submit">Register new user</button>
+            <h2 class="heading-medium">User found</h2>
+            <ul>
+                  <li style="text-align: left"><strong>Fred Bloggs<strong></li>
+                  <li style="text-align: left">fred.blogs@hmcts.net</li>
+            </ul>
+            <br />
+            <button id="editButton" class="button" type="submit">Invite this user</button>
+            <br/><br/>
+            <a href="admin-home-au.html">Return to main menu</a>
           </div>
           <input type="hidden" id="userId" name="userId" />
         </form>
-        <br/>
-        <a href="admin-home-so.html">Return to main menu</a>
 
       </div>
 
