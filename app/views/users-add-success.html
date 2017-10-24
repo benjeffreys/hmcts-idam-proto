@@ -50,31 +50,17 @@
   <div class="grid-row">
     <div class="column-full">
 
-      <h1 class="heading-large">Manage Users</h1>
-      <p>Search for a user by entering their full email address below. You can then edit an existing user or register them as a new one.</p>
-
-      <div class="form-group">
-
-        <label for="emailAddress">
-          <span class="form-label-bold">Email</span>
-        </label>
-
-        <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="fred.blogs@hmcts.net" />
-        <br/><br />
-
-        <form action="users-search-fail.html">
-        <button class="button" type="button" onclick="window.location='users-search-fail.html'">
-          Search (Case - User doesn't exist)
-        </button><br/><br/>
-        <button class="button" type="button" onclick="window.location='users-search-success.html'">
-          Search (Case - User exists)
-        </button>
-
-        <br/><br/>
-        <a href="admin-home-so.html">Return to main menu</a>
-
-      </form>
+      <div class="govuk-box-highlight">
+        <h1 class="heading-xlarge">
+          User added successfully
+        </h1>
+        <p class="font-small">
+          The user has been registered and should now receive an email. They will need to activate their account using the link in this email before they can sign-in.
+        </p>
       </div>
+
+      <br/><br/>
+      <a href="users-start.html">Manage another user</a><br/>or<br/><a href="admin-home-so.html">Return to main menu</a>
 
     </div>
   </div>
