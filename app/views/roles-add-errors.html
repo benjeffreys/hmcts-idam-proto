@@ -1,4 +1,10 @@
-{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
+{% extends "layout.html" %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
 
 <script>
   var roleNames = {
@@ -172,8 +178,8 @@
         <div class="error-summary" role="group" aria-labelledby="validation-error-summary-heading" tabindex="-1">
 
           <h1 class="heading-medium error-summary-heading" id="validation-error-summary-heading">
-                Information is missing or invalid
-              </h1>
+            Information is missing or invalid
+          </h1>
 
           <p>
             Please fix the following:
@@ -198,19 +204,20 @@
           <strong class="bold-small">
             Only roles for this service (that you have permission to manage) will be shown below.
           </strong>
-        </div><br /><br />
+        </div>
+        <br/><br/>
 
         <div class="form-group">
 
           <label for="roleName">
-                    <span class="form-label-bold">Role Label</span>
-                    <span class="form-hint">
-                      This is the unique label for your role. It cannot be edited after the role has been created.
-                    </span>
-                    <span class="error-message">
-                      Please enter a unique label for the role.
-                    </span>
-                </label>
+              <span class="form-label-bold">Role Label</span>
+              <span class="form-hint">
+                This is the unique label for your role. It cannot be edited after the role has been created.
+              </span>
+              <span class="error-message">
+                Please enter a unique label for the role.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="roleName" name="roleName" value="" />
 
@@ -219,14 +226,14 @@
         <div class="form-group">
 
           <label for="roleDescription">
-                    <span class="form-label-bold">Description</span>
-                    <span class="form-hint">
-                      This is the description of the role which helps to more easily identify it to IdAM administrators.
-                    </span>
-                    <span class="error-message">
-                      Please enter a description of the service.
-                    </span>
-                </label>
+              <span class="form-label-bold">Description</span>
+              <span class="form-hint">
+                This is the description of the role which helps to more easily identify it to IdAM administrators.
+              </span>
+              <span class="error-message">
+                Please enter a description of the service.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="roleDescription" name="roleDescription" value="" />
 
@@ -235,11 +242,11 @@
         <div class="form-group">
 
           <label for="assignableRoles">
-                    <span class="form-label-bold">Assignable Roles</span>
-                    <span class="form-hint">
-                      These are the user roles that can be assigned by a user with this role.
-                    </span>
-                </label>
+              <span class="form-label-bold">Assignable Roles</span>
+              <span class="form-hint">
+                These are the user roles that can be assigned by a user with this role.
+              </span>
+          </label>
 
           <ul class="list list-bullet" id="assignableRoles">
             <!-- <script>buildListItems('assignableRoles', assignableRoles);</script> -->
@@ -251,28 +258,29 @@
           <span id="error-assignable-role" class="error-message" style="display: none">Please select an assignable role.</span>
 
           <select class="form-control" name="newAssignableRole" id="newAssignableRole">
-                  <!-- <script>buildOptions('newAssignableRole')</script> -->
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
+            <!-- <script>buildOptions('newAssignableRole')</script> -->
+            <option value="">Select a role...</option>
+            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+          </select>
 
-          <br /><br />
+          <br/><br/>
 
-          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">Add assignable role
-                </button>
+          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">
+            Add assignable role
+          </button>
 
         </div>
 
         <div class="form-group">
 
           <label for="conflictingRoles">
-                    <span class="form-label-bold">Conflicting Roles</span>
-                    <span class="form-hint">
-                      If a user already has any of these roles, then this role cannot be added.
-                    </span>
-                </label>
+              <span class="form-label-bold">Conflicting Roles</span>
+              <span class="form-hint">
+                If a user already has any of these roles, then this role cannot be added.
+              </span>
+          </label>
 
           <ul class="list list-bullet" id="conflictingRoles">
             <!-- <script>buildListItems('conflictingRoles', conflictingRoles);</script> -->
@@ -282,17 +290,18 @@
           <span id="error-conflicting-role" class="error-message" style="display: none">Please select a conflicting role.</span>
 
           <select class="form-control" name="newConflictingRole" id="newConflictingRole">
-                  <!-- <script>buildOptions('newConflictingRole')</script> -->
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
+            <!-- <script>buildOptions('newConflictingRole')</script> -->
+            <option value="">Select a role...</option>
+            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+          </select>
 
           <br /><br />
 
-          <button type="button" class="button" onclick="addRole('newConflictingRole','conflictingRoles', conflictingRoles);">Add conflicting role
-                </button>
+          <button type="button" class="button" onclick="addRole('newConflictingRole','conflictingRoles', conflictingRoles);">
+            Add conflicting role
+          </button>
 
         </div>
 
@@ -307,14 +316,15 @@
           <input type="hidden" id="roleJson" name="roleJson" />
           <input type="hidden" id="roleId" name="roleId" value="" />
 
+          <br /><br />
 
-          <br /><br /><button class="button" onclick="save();">
-                  Save Role
-              </button><br /><br />
+          <button class="button" onclick="save();">
+            Save Role
+          </button>
 
-          <button onclick="window.location='/roles-display.html'" class="button" type="button">
-                  Cancel
-              </button>
+          <br/><br/>
+
+          <a href="roles-display.html">Return to roles list</a>
 
         </div>
 
@@ -322,4 +332,7 @@
     </div>
 
   </form>
-  {% endblock %}
+
+</main>
+
+{% endblock %}

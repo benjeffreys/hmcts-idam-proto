@@ -163,8 +163,8 @@
         <div class="error-summary" role="group" aria-labelledby="validation-error-summary-heading" tabindex="-1">
 
           <h1 class="heading-medium error-summary-heading" id="validation-error-summary-heading">
-                Information is missing or invalid
-              </h1>
+            Information is missing or invalid
+          </h1>
 
           <p>
             Please fix the following:
@@ -185,14 +185,14 @@
         <div class="form-group form-group-error">
 
           <label for="serviceLabel">
-                    <span class="form-label-bold">Label</span>
-                    <span class="form-hint">
-                      This is the unique label for your service
-                    </span>
-                    <span class="error-message">
-                      Please enter a unique label for the service.
-                    </span>
-                </label>
+              <span class="form-label-bold">Label</span>
+              <span class="form-hint">
+                This is the unique label for your service
+              </span>
+              <span class="error-message">
+                Please enter a unique label for the service.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="serviceLabel" name="serviceLabel" value="" />
 
@@ -201,14 +201,14 @@
         <div class="form-group form-group-error">
 
           <label for="serviceDescription">
-                    <span class="form-label-bold">Description</span>
-                    <span class="form-hint">
-                      This is the description of the service which helps to more easily identify it to IdAM administrators.
-                    </span>
-                    <span class="error-message">
-                      Please enter a description of the service.
-                    </span>
-                </label>
+              <span class="form-label-bold">Description</span>
+              <span class="form-hint">
+                This is the description of the service which helps to more easily identify it to IdAM administrators.
+              </span>
+              <span class="error-message">
+                Please enter a description of the service.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="serviceDescription" name="serviceDescription" value="" />
 
@@ -217,11 +217,11 @@
         <div class="form-group">
 
           <label for="onboardingEndpoint">
-                    <span class="form-label-bold">On-boarding Endpoint</span>
-                    <span class="form-hint">
-                      This endpoint can be used during the citizen invitation process. It will be passed information about the newly registered user once they activate their account.
-                    </span>
-                </label>
+              <span class="form-label-bold">On-boarding Endpoint</span>
+              <span class="form-hint">
+                This endpoint can be used during the citizen invitation process. It will be passed information about the newly registered user once they activate their account.
+              </span>
+          </label>
 
           <input class="form-control" type="text" id="onboardingEndpoint" name="onboardingEndpoint" value="" />
 
@@ -230,11 +230,11 @@
         <div class="form-group">
 
           <label for="allowedRolesList">
-                    <span class="form-label-bold">Service Roles</span>
-                    <span class="form-hint">
-                      These are the unique user roles for this service. You will need to create these roles before you can add them here (the service can be created without them initially).
-                    </span>
-                </label>
+              <span class="form-label-bold">Service Roles</span>
+              <span class="form-hint">
+                These are the unique user roles for this service. You will need to create these roles before you can add them here (the service can be created without them initially).
+              </span>
+          </label>
 
           <ul class="list list-bullet" id="allowedRolesList">
             <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
@@ -243,11 +243,11 @@
           </ul>
 
           <select class="form-control" name="newAllowedRoles" id="newAllowedRoles">
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
+            <option value="">Select a role...</option>
+            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+          </select>
 
           <br /><br />
 
@@ -258,22 +258,22 @@
         <div class="form-group">
 
           <label for="newOnboardingRoles">
-                    <span class="form-label-bold">Private Beta Roles</span>
-                    <span class="form-hint">
-                      These are the user roles that will be added to any user that is invited to a private beta.
-                    </span>
-                </label>
+              <span class="form-label-bold">Private Beta Roles</span>
+              <span class="form-hint">
+                These are the user roles that will be added to any user that is invited to a private beta.
+              </span>
+          </label>
 
           <ul class="list list-bullet" id="onboardingRolesList">
             <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
           </ul>
 
           <select class="form-control" name="newOnboardingRoles" id="newOnboardingRoles">
-                  <option value="">Select a role...</option>
-                  <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-                  <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-                </select>
+            <option value="">Select a role...</option>
+            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
+            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
+          </select>
 
           <br /><br />
 
@@ -292,14 +292,12 @@
           <input type="hidden" id="serviceId" name="serviceId" value="" />
           <input type="hidden" id="allowedRoles" name="allowedRoles" value="" />
           <input type="hidden" id="onboardingRoles" name="onboardingRoles" value="" />
-          <br /><br />
-          <button class="button" type="submit">
-          Save Service
-      </button><br /><br />
 
-      <button onclick="window.location='/services-start.html'" class="button" type="button">
-      Cancel
-  </button>
+          <button class="button" type="submit">
+            Save Service
+          </button>
+          <br /><br />
+          <a href="services-start.html">Return to list of services</a>
 
         </div>
 
