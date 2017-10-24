@@ -1,4 +1,10 @@
-{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
+{% extends "layout.html" %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
 
 <script>
   var roleNames = {
@@ -151,7 +157,7 @@
     <ol>
       <li><a href="/">Home</a></li>
       <li><a href="/services-start.html">Manage Services</a></li>
-      <li>Add Service</li>
+      <li>Add A New Service</li>
     </ol>
   </div>
 
@@ -160,7 +166,7 @@
     <div class="grid-row">
       <div class="column-two-thirds">
 
-        <h1 class="heading-large">Add Service</h1>
+        <h1 class="heading-large">Add A Service</h1>
         <p>You can enter the details of the new service below.</p>
 
         <div class="form-group">
@@ -213,14 +219,12 @@
           <input type="hidden" id="serviceId" name="serviceId" value="" />
           <input type="hidden" id="allowedRoles" name="allowedRoles" value="" />
           <input type="hidden" id="onboardingRoles" name="onboardingRoles" value="" />
-          <br /><br />
-          <button class="button" type="submit">
-          Save Service
-      </button><br /><br />
 
-          <button onclick="window.location='/services-start.html'" class="button" type="button">
-          Cancel and return to service list
-      </button>
+          <button class="button" type="submit">
+            Save Service
+          </button>
+          <br /><br />
+          <a href="services-start.html">Return to list of services</a>
 
         </div>
 

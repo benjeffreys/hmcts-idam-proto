@@ -1,4 +1,10 @@
-{% extends "layout.html" %} {% block page_title %} GOV.UK prototype kit {% endblock %} {% block content %}
+{% extends "layout.html" %}
+
+{% block page_title %}
+GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
 
 <script>
   var roleNames = {
@@ -151,7 +157,7 @@
     <ol>
       <li><a href="/">Home</a></li>
       <li><a href="/services-start.html">Manage Services</a></li>
-      <li>Edit Service</li>
+      <li>DIVORCE</li>
     </ol>
   </div>
 
@@ -161,17 +167,17 @@
       <div class="column-two-thirds">
 
 
-        <h1 class="heading-large">Edit Service - SERVICE_LABEL</h1>
+        <h1 class="heading-large">Edit Service - DIVORCE</h1>
         <p>You can edit the settings for this service below.</p>
 
         <div class="form-group">
 
           <label for="serviceLabel">
-                    <span class="form-label-bold">Label</span>
-                    <span class="form-hint">
-                      This is the unique label for your service. It cannot be edited after the service has been created.
-                    </span>
-                </label>
+              <span class="form-label-bold">Label</span>
+              <span class="form-hint">
+                This is the unique label for your service. It cannot be edited after the service has been created.
+              </span>
+          </label>
 
           <input disabled class="form-control" type="text" value="SERVICE_LABEL" />
 
@@ -214,10 +220,14 @@
           <input type="hidden" id="serviceId" name="serviceId" value="" />
           <input type="hidden" id="allowedRoles" name="allowedRoles" value="" />
           <input type="hidden" id="onboardingRoles" name="onboardingRoles" value="" />
-          <br /><br />
+
           <button class="button" type="submit">
-          Save Service
-      </button><br /><br /><input class="button" type="button" onclick="window.location='services-start.html'" value="Cancel and return to service list">
+            Save Service
+          </button>
+
+          <br /><br />
+
+          <a href="services-start.html">Return to list of services</a>
 
         </div>
 

@@ -13,73 +13,72 @@
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a>Manage Services</a></li>
+      <li>Manage Services</li>
     </ol>
   </div>
 
   <script>
-    function edit(serviceId) {
-      var form = document.getElementById("serviceForm");
-      var hiddenId = document.getElementById("serviceId");
-      hiddenId.value = serviceId;
-      form.submit();
+    function submitHandler() {
+      var goToURL = document.querySelector('input[name="radio-group"]:checked').value;
+      window.location = goToURL;
     }
   </script>
 
-  <div class="grid-row">
-    <div class="column-full">
+  <form method="post" id="serviceForm" action="/services-add">
+    <div class="grid-row">
+      <div class="column-full">
 
-    <form method="post" id="serviceForm" action="/services">
+        <h1 class="heading-large">Manage Services</h1>
+        <p>You can manage an existing service or add a new one below.</p>
 
-      <h1 class="heading-large">Manage Services</h1>
-      <p>You can add a new service or edit an existing one below.</p>
+        <div class="form-group">
+          <fieldset>
 
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align: left">Service Label</th>
-            <th style="text-align: left">Description</th>
-            <th style="text-align: left">Available Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align: left"><strong>DIVORCE</strong></td>
-            <td style="text-align: left"><strong>Reform Divorce service </strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>CMC_CIT</strong></td>
-            <td style="text-align: left"><strong>Citizen facing CMC service </strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>CMC_ADMIN</strong></td>
-            <td style="text-align: left"><strong>Solicitor facing CMC service</strong></td>
-            <td style="text-align: left"><strong><a href="services-edit.html">Edit</a></strong></td>
-          </tr>
-        </tbody>
-      </table>
+            <legend>
+              <h1 class="heading-medium">Which service do you want to manage?</h1>
+            </legend>
 
-      <input type="hidden" id="serviceId" name="serviceId" />
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-1">Divorce Citizen App (DIVORCE)</label>
+            </div>
+            <div class="multiple-choice">
+              <input disabled id="radio-2" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-2">Civil Money Claims Citizen App (CMC_CIT)</label>
+            </div>
+            <div class="multiple-choice">
+              <input disabled id="radio-3" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-3">Civil Money Claims Solicitor App (CMC_SOL)</label>
+            </div>
+            <p class="form-block">or</p>
+            <div class="multiple-choice">
+              <input id="radio-new" type="radio" name="radio-group" value="services-add.html">
+              <label for="radio-new">Add a new service</label>
+            </div>
 
-    </form>
-  </div>
-</div>
+          </fieldset>
+        </div>
+
+        <input type="hidden" id="serviceId" name="serviceId" />
+
+      </div>
+    </div>
 
 
-<div class="grid-row">
-  <div class="column-full">
-<br / >
-    <form method="post" action="/services-add">
-      <button class="button" type="submit">
-                Add a new service
-            </button><br /><br />
-            <input class="button" type="button" onclick="window.location='admin-home-so.html'" value="Cancel and return to main menu">
-    </form>
-</div>
-</div>
+    <div class="grid-row">
+      <div class="column-full">
 
-  </main>
+        <button class="button" type="button" onclick="submitHandler();">
+          Continue
+        </button>
+        <br/><br/>
+        <a href="admin-home-so.html">Return to main menu</a>
 
-  {% endblock %}
+      </div>
+    </div>
+
+  </form>
+
+</main>
+
+{% endblock %}

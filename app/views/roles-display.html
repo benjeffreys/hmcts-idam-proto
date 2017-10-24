@@ -13,73 +13,72 @@
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a>Manage Roles</a></li>
+      <li><a href="roles-start.html">Manage Roles</a></li>
+      <li>DIVORCE</li>
     </ol>
   </div>
 
   <script>
-      function edit(roleId){
-          var form = document.getElementById("roleForm");
-          var hiddenId = document.getElementById("roleId");
-          hiddenId.value = roleId;
-          form.submit();
-      }
+    function submitHandler() {
+      var goToURL = document.querySelector('input[name="radio-group"]:checked').value;
+      window.location = goToURL;
+    }
   </script>
 
-  <div class="grid-row">
-    <div class="column-full">
+  <form method="post" id="roleForm" action="/roles">
 
-    <form method="post" id="roleForm" action="/roles">
+    <div class="grid-row">
+      <div class="column-full">
 
-      <h1 class="heading-large">Manage Roles - DIVORCE</h1>
-      <p>You can add a new user role to this service or edit an existing one below.</p>
+        <h1 class="heading-large">Manage Roles - DIVORCE</h1>
+        <p>You can edit an existing role or add a new one below.</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align: left">Role Label</th>
-            <th style="text-align: left">Description</th>
-            <th style="text-align: left">Available Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_1</strong></td>
-            <td style="text-align: left"><strong>Example role for a service</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_2</strong></td>
-            <td style="text-align: left"><strong>Additional role for a service</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-          <tr>
-            <td style="text-align: left"><strong>SERVICE_ROLE_3</strong></td>
-            <td style="text-align: left"><strong>One last additional service role</strong></td>
-            <td style="text-align: left"><strong><a href="roles-edit.html">Edit</a></strong></td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="form-group">
+          <fieldset>
 
-      <input type="hidden" id="roleId" name="roleId" />
+            <legend>
+              <h1 class="heading-medium">Which role do you want to edit?</h1>
+            </legend>
 
-    </form>
-  </div>
-</div>
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="radio-group" value="roles-edit.html">
+              <label for="radio-1">DIVORCE_SUPER</label>
+            </div>
+            <div class="multiple-choice">
+              <input disabled id="radio-2" type="radio" name="radio-group" value="roles-edit.html">
+              <label for="radio-2">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input disabled id="radio-3" type="radio" name="radio-group" value="roles-edit.html">
+              <label for="radio-3">DIVORCE_PRIVATE_BETA</label>
+            </div>
+            <p class="form-block">or</p>
+            <div class="multiple-choice">
+              <input id="radio-new" type="radio" name="radio-group" value="roles-add.html">
+              <label for="radio-new">Add a new role</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+      </div>
+    </div>
 
 
-<div class="grid-row">
-  <div class="column-full">
-<br / >
-    <form method="post" action="/roles-add">
-      <button class="button" type="submit">
-                Add a new role
-            </button><br /><br />
-            <input class="button" type="button" onclick="window.location='roles-start.html'" value="Cancel and return to service list">
-    </form>
-</div>
-</div>
+    <div class="grid-row">
+      <div class="column-full">
 
-  </main>
+        <button class="button" type="button" onclick="submitHandler();">
+          Continue
+        </button>
+        <br/><br/>
+        <a href="roles-start.html">Return to service list</a>
 
-  {% endblock %}
+      </div>
+    </div>
+
+  </form>
+
+</main>
+
+{% endblock %}

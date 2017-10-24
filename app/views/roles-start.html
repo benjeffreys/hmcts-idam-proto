@@ -13,17 +13,17 @@
   <div class="breadcrumbs">
     <ol>
       <li><a href="/">Home</a></li>
-      <li><a>Manage Roles</a></li>
+      <li>Manage Roles</li>
     </ol>
   </div>
 
-  <div class="grid-row">
-    <div class="column-full">
+  <form method="get" id="roleForm" action="roles-display.html">
 
-      <form method="get" id="roleForm" action="roles-display.html">
+    <div class="grid-row">
+      <div class="column-full">
 
         <h1 class="heading-large">Manage Roles</h1>
-        <p>This section allows you to manage the user roles assigned to a service.</p>
+        <p>This section allows you to edit user roles assigned to a service or add new ones.</p>
 
         <div class="form-group">
           <fieldset>
@@ -33,29 +33,29 @@
             </legend>
 
             <div class="multiple-choice">
-              <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+              <input id="radio-1" type="radio" name="radio-group" value="DIVORCE">
               <label for="radio-1">Divorce Citizen App (DIVORCE)</label>
             </div>
             <div class="multiple-choice">
-              <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+              <input disabled id="radio-2" type="radio" name="radio-group" value="CMC_CIT">
               <label for="radio-2">Civil Money Claims Citizen App (CMC_CIT)</label>
             </div>
             <div class="multiple-choice">
-              <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+              <input disabled id="radio-3" type="radio" name="radio-group" value="CMC_SOL">
               <label for="radio-3">Civil Money Claims Solicitor App (CMC_SOL)</label>
             </div>
 
           </fieldset>
         </div>
 
-          <input class="button" type="submit" value="Continue"><br /><br />
-          <input class="button" type="button" onclick="window.location='admin-home-so.html'" value="Cancel and return to main menu">
+        <input class="button" type="submit" value="Continue">
+        <br/><br/>
+        <a href="admin-home-so.html">Return to main menu</a>
 
-      </form>
-
+      </div>
     </div>
-  </div>
 
-  </main>
+  </form>
+</main>
 
-  {% endblock %}
+{% endblock %}
