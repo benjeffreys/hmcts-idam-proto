@@ -188,11 +188,11 @@ GOV.UK prototype kit
           <label for="serviceDescription">
               <span class="form-label-bold">Description</span>
               <span class="form-hint">
-                This is the description of the service which helps to more easily identify it to IdAM administrators.
+                This is a short description of the service which helps to more easily identify it to IdAM administrators.
               </span>
           </label>
 
-          <input class="form-control" type="text" id="serviceDescription" name="serviceDescription" value="" />
+          <input class="form-control" type="text" id="serviceDescription" name="serviceDescription" value="Description example" />
 
         </div>
 
@@ -207,6 +207,35 @@ GOV.UK prototype kit
 
           <input class="form-control" type="text" id="onboardingEndpoint" name="onboardingEndpoint" value="" />
 
+        </div>
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <h2 class="heading-small">Private beta role</h2>
+              <p>Please select a role to apply when a user is invited to the private beta for this service.</p>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-1">DIVORCE_SUPER</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-2">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input checked id="radio-3" type="radio" name="radio-group" value="services-edit.html">
+              <label for="radio-3">DIVORCE_PRIVATE_BETA</label>
+            </div>
+            <p class="form-block">or</p>
+            <div class="multiple-choice">
+              <input id="radio-new" type="radio" name="radio-group" value="services-add.html">
+              <label for="radio-new">No role (if service is not in private beta)</label>
+            </div>
+
+          </fieldset>
         </div>
 
       </div>
