@@ -178,15 +178,6 @@ Reform IdAM V1.x Prototype
         <h1 class="heading-large">Add A New Role - DIVORCE</h1>
         <p>You can enter the details of the new role below.</p>
 
-        <div class="notice">
-          <i class="icon icon-important">
-            <span class="visually-hidden">Please note</span>
-          </i>
-          <strong class="bold-small">
-            Only roles for this service (that you have permission to manage) will be shown below.
-          </strong>
-        </div><br /><br />
-
         <div class="form-group">
 
           <label for="roleName">
@@ -215,65 +206,65 @@ Reform IdAM V1.x Prototype
 
         <div class="form-group">
 
-          <label for="assignableRoles">
+          <fieldset>
+
+            <legend>
               <span class="form-label-bold">Assignable Roles</span>
               <span class="form-hint">
                 These are the user roles that can be assigned by a user with this role.
               </span>
-          </label>
+            </legend><br/>
 
-          <ul class="list list-bullet" id="assignableRoles">
-            <!-- <script>buildListItems('assignableRoles', assignableRoles);</script> -->
-            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-            <li>EXISTING_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-          </ul>
+            <div class="multiple-choice">
+              <input checked="checked" id="select-1" type="checkbox" name="assignable-roles" value="DIVORCE_ADMIN">
+              <label for="select-1">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-2" type="checkbox" name="assignable-roles" value="DIVORCE_ROLE_2">
+              <label for="select-2">DIVORCE_ROLE_2</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-3" type="checkbox" name="assignable-roles" value="DIVORCE_ADMIN">
+              <label for="select-3">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-4" type="checkbox" name="assignable-roles" value="DIVORCE_CONFLICTING_ROLE">
+              <label for="select-4">DIVORCE_CONFLICTING_ROLE</label>
+            </div>
 
-          <span id="error-assignable-role" class="error-message" style="display: none">Please select at least one role.</span>
-
-          <select class="form-control" name="newAssignableRole" id="newAssignableRole">
-            <!-- <script>buildOptions('newAssignableRole')</script> -->
-            <option value="">Select a role...</option>
-            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-          </select>
-
-          <br/><br/>
-
-          <button type="button" class="button" onclick="addRole('newAssignableRole', 'assignableRoles', assignableRoles);">
-            Add assignable role
-          </button>
+          </fieldset>
 
         </div>
 
         <div class="form-group">
 
-          <label for="conflictingRoles">
+          <fieldset>
+
+            <legend>
               <span class="form-label-bold">Conflicting Roles</span>
               <span class="form-hint">
                 If a user already has any of these roles, then this role cannot be added.
               </span>
-          </label>
+            </legend>
 
-          <ul class="list list-bullet" id="conflictingRoles">
-            <!-- <script>buildListItems('conflictingRoles', conflictingRoles);</script> -->
-            <li>OTHER_PRV_BETA_ROLE1 <a href="#" title="Remove this role">[Remove]</a></li>
-          </ul>
+            <div class="multiple-choice">
+              <input checked="checked" id="select-1" type="checkbox" name="conflicting-roles" value="DIVORCE_ADMIN">
+              <label for="select-1">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-2" type="checkbox" name="conflicting-roles" value="DIVORCE_ROLE_2">
+              <label for="select-2">DIVORCE_ROLE_2</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-3" type="checkbox" name="conflicting-roles" value="DIVORCE_ADMIN">
+              <label for="select-3">DIVORCE_ADMIN</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="select-4" type="checkbox" name="conflicting-roles" value="DIVORCE_CONFLICTING_ROLE">
+              <label for="select-4">DIVORCE_CONFLICTING_ROLE</label>
+            </div>
 
-          <select class="form-control" name="newConflictingRole" id="newConflictingRole">
-            <!-- <script>buildOptions('newConflictingRole')</script> -->
-            <option value="">Select a role...</option>
-            <option value="aed8a6b9-ec72-4a7b-9895-fd584bce79aa">SERV_ADMIN2</option>
-            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_CASE_WORKER</option>
-            <option value="688c7624-83a4-4c39-a9b0-4ba6d87e8538">SERV_PRIVATE_BETA</option>
-          </select>
-
-          <br/><br/>
-
-          <button type="button" class="button" onclick="addRole('newConflictingRole','conflictingRoles', conflictingRoles);">
-            Add conflicting role
-          </button>
+          </fieldset>
 
         </div>
 
@@ -289,7 +280,7 @@ Reform IdAM V1.x Prototype
           <input type="hidden" id="roleId" name="roleId" value="" />
 
           <button class="button" onclick="save();">
-            Save Role
+            Save this role
           </button>
 
           <br/><br/>
