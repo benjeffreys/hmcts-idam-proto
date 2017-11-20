@@ -1,0 +1,63 @@
+{% extends "layout.html" %} {% block page_title %} Reform IdAM V1.x Prototype {% endblock %} {% block content %}
+
+<script>
+  function search() {
+
+    $("#loading").removeClass("hidden");
+    $("#details").addClass("hidden");
+    var email = document.getElementById("emailAddress").value;
+
+    $.post("/users/search", {
+        emailAddress: email
+      },
+      function(data, status, jqXHR) {
+        $("#loading").addClass("hidden");
+        $("#details").removeClass("hidden");
+        updateUsers(data);
+      });
+
+  }
+
+  function updateUsers(user) {
+
+    var containerDiv = document.getElementById("userDetails");
+    if (user === null || user === "" || user === 'undefined') {
+      var hiddenId = document.getElementById("userId");
+      hiddenId.value = "";
+      document.getElementById("newEmailAddress").value = document.getElementById("emailAddress").value;
+      containerDiv.innerHTML = "Could not find a user with the specified email address.";
+      $("#inviteButton").removeClass("hidden");
+    } else {
+      var hiddenId = document.getElementById("userId");
+      hiddenId.value = user.id;
+      containerDiv.innerHTML = user.forename + " " + user.surname + ' <br><button type="submit" class="button">Edit</button>';
+      $("#inviteButton").addClass("hidden");
+    }
+  }
+</script>
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-full">
+
+      <div class="govuk-box-highlight">
+        <h1 class="heading-xlarge">
+          Registration successful
+        </h1>
+        <p class="font-small">
+          Your account has been registered. You should now receive an email with a link that will activate your account.</p>
+          <p class="font-small">You will need to do this before you can sign-in and start to use any HMCTS services.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  {% include "includes/survey_footer.html" %}
+  
+</main>
+
+{% endblock %}

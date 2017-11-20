@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Reform IdAM V1.x Prototype
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "includes/phase_banner_beta.html" %}
+
+  <div class="grid-row">
+    <div class="column-full">
+
+      <h1 class="heading-xlarge">
+        Create a password
+      </h1>
+</div>
+</div>
+
+
+      <div class="form-group">
+          <label for="firstname">
+            <span class="form-label-bold">First name</span>
+            <span class="form-hint">Please enter the user's first name</span>
+          </label>
+          <input class="form-control" type="text" id="firstname" name="firstname">
+      </div>
+
+      <div class="form-group">
+          <label for="lastname">
+            <span class="form-label-bold">Last name</span>
+            <span class="form-hint">Please enter the user's last name</span>
+          </label>
+          <input class="form-control" type="text" id="lastname" name="lastname">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grid-row">
+      <div class="column-full-width">
+
+          <details role="group">
+
+              <summary class="font-xsmall" role="button" aria-controls="details-content-0" aria-expanded="false">
+                  <span class="summary">Is there a problem with this page?</span>
+              </summary>
+
+              <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+                  <p class="text">
+                      <span class="bold-small">Help us improve this service</span>
+                  </p>
+                  <p class="text">
+                      <a aria-label="This link will open in a new tab. You’ll need to return to this tab and continue with your application within 60 minutes so you don’t lose your progress."
+                         href="http://www.smartsurvey.co.uk/s/2T7C6/" target="_blank">Please report any problems with this page</a>
+                  </p>
+                  <p class="text">
+                      This link will open a new tab. You'll need to return to this tab and continue with your application within 60
+                      minutes so you don't lose your progress.
+                  </p>
+              </div>
+          </details>
+
+      </div>
+    </div>
+
+</main>
+
+{% endblock %}
